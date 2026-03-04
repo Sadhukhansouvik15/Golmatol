@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Holi My Love 🌈</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body{
+font-family:'Poppins',sans-serif;
+min-height:200vh;
+background:linear-gradient(135deg,#ff6b6b,#feca57,#ffd93d,#ff9ff3);
+background-size:400% 400%;
+animation:gradientShift 10s ease infinite;
+position:relative;
+cursor:none;
+padding:80px 20px 60px 20px; /* ✅ MORE TOP PADDING */
+}
+
+@keyframes gradientShift{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+/* FIXED: ULTRA-VISIBLE TITLE */
+.main-title{
+text-align:center;
+margin: 80px 0 60px 0; /* ✅ MORE MARGIN */
+perspective: 1000px;
+position: relative;
+z-index: 50; /* ✅ HIGHER Z-INDEX */
+}
+
+.main-title h1{
+font-size:clamp(3.2em,9vw,5.5em);
+font-weight:900 !important; /* ✅ EXTRA BOLD */
+color: #fff !important; /* ✅ PURE WHITE - NO GRADIENT */
+text-shadow: 
+    0 0 10px rgba(255,255,255,0.9),
+    0 0 20px rgba(255,255,255,0.8),
+    0 0 30px rgba(255,182,61,0.7),
+    2px 2px 4px rgba(0,0,0,0.3); /* ✅ MULTI-LAYER SHADOW */
+line-height: 1.1;
+letter-spacing: -2px;
+position: relative;
+animation: titleGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow {
+    0% { 
+        text-shadow: 
+            0 0 10px rgba(255,255,255,0.9),
+            0 0 20px rgba(255,255,255,0.8),
+            0 0 30px rgba(255,182,61,0.7),
+            2px 2px 4px rgba(0,0,0,0.3);
+    }
+    100% { 
+        text-shadow: 
+            0 0 20px rgba(255,255,255,1),
+            0 0 40px rgba(255,255,255,0.9),
+            0 0 60px rgba(255,182,61,1),
+            3px 3px 6px rgba(0,0,0,0.4);
+    }
+}
+
+/* BACKUP TEXT SHADOW FOR SAFARI */
+.main-title h1::before {
+    content: 'Happy Holi My Love 🌈💖';
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: rgba(255,255,255,0.3);
+    z-index: -1;
+}
+
+/* SCROLL INDICATOR */
+.scroll-indicator {
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    background: rgba(0,0,0,0.8);
+    backdrop-filter: blur(20px);
+    color: #ffd93d;
+    padding: 12px 18px;
+    border-radius: 30px;
+    font-size: 0.95em;
+    font-weight: 600;
+    z-index: 1000;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+}
+
+/* 3D CURSOR */
+.custom-cursor {
+    position: fixed;
+    width: 28px;
+    height: 28px;
+    background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,0.6) 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    box-shadow: 
+        0 0 25px rgba(255,255,255,1),
+        inset 0 0 12px rgba(255,255,255,0.5);
+    transition: transform 0.12s ease;
+}
+
+.cursor-trail {
+    position: fixed;
+    width: 14px;
+    height: 14px;
+    background: rgba(255,182,61,0.9);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+}
+
+/* SECTIONS */
+.section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    opacity: 0;
+    transform: translateY(60px);
+    transition: all 1s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+
+.section.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* PHOTO CONTAINER */
+.photo-container{
+position: relative;
+width:clamp(360px,48vw,520px);
+height:clamp(460px,63vw,650px);
+border-radius:50% / 60%;
+overflow:hidden;
+border:14px solid rgba(255,255,255,0.98);
+box-shadow:
+    0 0 80px rgba(255,255,255,1),
+    0 45px 140px rgba(0,0,0,0.6),
+    inset 0 0 70px rgba(255,255,255,0.6);
+margin: 50px auto;
+perspective: 1200px;
+transform-style: preserve-3d;
+transition: all 0.9s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+
+.photo-container::before {
+    content: '';
+    position: absolute;
+    top: -14px;
+    left: -14px;
+    right: -14px;
+    bottom: -14px;
+    background: linear-gradient(45deg, #ff6b6b, #ff9ff3, #48dbfb, #ffd93d);
+    border-radius: 50% / 60%;
+    z-index: -1;
+    animation: borderRotate 6s linear infinite;
+    filter: blur(15px);
+    opacity: 0.9;
+}
+
+@keyframes borderRotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.photo-container img{
+width:100%;
+height:100%;
+object-fit:cover;
+object-position:center 20%;
+display:block;
+transition: all 0.8s cubic-bezier(0.25,0.46,0.45,0.94);
+transform-style: preserve-3d;
+}
+
+.photo-container:hover {
+    transform: rotateY(15deg) rotateX(8deg) scale(1.03);
+    box-shadow:
+        0 0 120px rgba(255,255,255,1),
+        0 60px 180px rgba(0,0,0,0.7);
+}
+
+/* LOVE CARD */
+.love-card{
+position: relative;
+background:linear-gradient(145deg, rgba(255,255,255,0.99), rgba(255,255,255,0.92));
+padding:40px 60px;
+border-radius:40px;
+max-width:550px;
+text-align:center;
+box-shadow:
+    0 40px 120px rgba(0,0,0,0.45),
+    0 0 60px rgba(255,255,255,0.5),
+    inset 0 2px 0 rgba(255,255,255,1);
+perspective: 1000px;
+transition: all 0.7s ease;
+transform-style: preserve-3d;
+margin: 50px auto;
+}
+
+.love-card p{
+font-size:1.35em;
+line-height:1.8;
+color:#2d3436;
+margin-bottom:35px;
+font-weight:300;
+}
+
+/* MAGIC BUTTON */
+.magic-btn{
+position: relative;
+background:linear-gradient(45deg,#ff6b6b,#ff9ff3);
+color:#fff;
+border:none;
+padding:25px 55px;
+border-radius:55px;
+font-size:1.3em;
+font-weight:700;
+cursor:pointer;
+box-shadow:
+    0 25px 60px rgba(255,107,180,0.7),
+    inset 0 2px 0 rgba(255,255,255,0.5);
+transition: all 0.5s cubic-bezier(0.25,0.46,0.45,0.94);
+transform-style: preserve-3d;
+text-transform: uppercase;
+letter-spacing: 2px;
+}
+
+.magic-btn:hover {
+    transform: translateZ(30px) translateY(-12px) scale(1.12);
+    box-shadow:
+        0 35px 90px rgba(255,107,180,0.9),
+        inset 0 2px 0 rgba(255,255,255,0.6);
+}
+
+/* PARTICLES */
+#particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 4;
+    pointer-events: none;
+}
+
+@media (max-width: 768px) {
+    body { padding: 40px 15px 40px 15px; }
+    .main-title { margin: 60px 0 40px 0; }
+}
+</style>
+</head>
+
+<body>
+<!-- FIXED SCROLL INDICATOR -->
+<div class="scroll-indicator" id="scrollIndicator">📜 Scroll down for more magic!</div>
+
+<!-- ENHANCED CURSOR -->
+<div class="custom-cursor" id="cursor"></div>
+<div class="cursor-trail" id="trail1"></div>
+<div class="cursor-trail" id="trail2"></div>
+<div class="cursor-trail" id="trail3"></div>
+
+<!-- PARTICLES -->
+<canvas id="particles"></canvas>
+
+<!-- SECTION 1 -->
+<section class="section" id="section1">
+    <div class="main-title">
+        <h1>Happy Holi My Love 🌈💖</h1>
+    </div>
+    
+    <div class="photo-container" id="photoFrame">
+        <img src="she.png" alt="My Love" id="photoImg">
+    </div>
+</section>
+
+<!-- SECTION 2 -->
+<section class="section" id="section2">
+    <div class="love-card">
+        <p>
+            My Cute Golmatol, this Holi I miss you more than words can say.<br><br>
+            Your smile lights up my world brighter than all these colors.<br>
+            I can't wait to celebrate Holi together with you ❤️🥰....
+            I Love You More Than Anything ❤️<br>
+            You Are the Color of My Life Sona 💕😘
+        </p>
+        <button class="magic-btn" id="magicBtn">🚀 Launch Holi Love Magic!</button>
+    </div>
+</section>
+
+<script>
+// SCROLL ANIMATION
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('animate');
+        }
+    });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.section').forEach(section => observer.observe(section));
+
+// SCROLL INDICATOR
+window.addEventListener('scroll', () => {
+    const scrollPercent = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+    const indicator = document.getElementById('scrollIndicator');
+    if (scrollPercent > 40) {
+        indicator.textContent = '✨ Magic unlocked! ✨';
+        indicator.style.background = 'rgba(255,182,61,0.9)';
+    } else {
+        indicator.textContent = '📜 Scroll down for more magic!';
+        indicator.style.background = 'rgba(0,0,0,0.8)';
+    }
+});
+
+// 3D MOUSE TRACKING
+let mouse = { x: 0, y: 0 };
+document.addEventListener('mousemove', (e) => {
+    mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+    mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+    
+    document.getElementById('cursor').style.left = e.clientX + 'px';
+    document.getElementById('cursor').style.top = e.clientY + 'px';
+    
+    // Trails
+    const trails = ['trail1', 'trail2', 'trail3'];
+    trails.forEach((id, i) => {
+        const trail = document.getElementById(id);
+        setTimeout(() => {
+            trail.style.left = e.clientX + (i * 10 - 15) + 'px';
+            trail.style.top = e.clientY + (i * 10 - 15) + 'px';
+            trail.style.opacity = 0.8 - (i * 0.2);
+        }, i * 50);
+    });
+});
+
+// PHOTO 3D EFFECT
+const photoFrame = document.getElementById('photoFrame');
+document.addEventListener('scroll', () => {
+    const rect = photoFrame.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+        photoFrame.style.transform = `rotateY(${mouse.x * 10}deg) rotateX(${mouse.y * 10}deg) scale(1.02)`;
+    }
+});
+
+// INTERACTIONS
+const photos = ['she.png', 'she2.jpg'];
+let currentPhoto = 0;
+photoFrame.addEventListener('click', () => {
+    currentPhoto = (currentPhoto + 1) % photos.length;
+    document.getElementById('photoImg').src = photos[currentPhoto];
+    launchParticles();
+});
+
+document.getElementById('magicBtn').addEventListener('click', launchParticles);
+
+// PARTICLES
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+let particles = [];
+const holiColors = ['#ff6b6b', '#feca57', '#48dbfb', '#ff9ff3', '#ffd93d'];
+
+function createParticles(x, y, count = 60) {
+    for(let i = 0; i < count; i++) {
+        particles.push({
+            x: x, y: y,
+            vx: (Math.random() - 0.5) * 20,
+            vy: (Math.random() - 0.5) * 20 - 5,
+            size: Math.random() * 25 + 12,
+            color: holiColors[Math.floor(Math.random() * holiColors.length)],
+            life: 160,
+            maxLife: 160
+        });
+    }
+}
+
+function launchParticles() {
+    createParticles(window.innerWidth / 2, window.innerHeight / 2, 100);
+    document.body.style.animation = 'shake 0.15s ease-in-out';
+    setTimeout(() => document.body.style.animation = '', 300);
+}
+
+function animateParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach((p, i) => {
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += 0.18;
+        p.life--;
+        p.size *= 0.98;
+        if(p.life <= 0 || p.size < 1) {
+            particles.splice(i, 1);
+            return;
+        }
+        ctx.save();
+        ctx.globalAlpha = p.life / p.maxLife;
+        ctx.fillStyle = p.color;
+        ctx.shadowColor = p.color;
+        ctx.shadowBlur = 35;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+    });
+    requestAnimationFrame(animateParticles);
+}
+
+setInterval(() => createParticles(Math.random() * canvas.width, canvas.height, 4), 1000);
+animateParticles();
+
+const style = document.createElement('style');
+style.textContent = '@keyframes shake {0%,100%{transform:translateX(0);}25%{transform:translateX(-6px);}75%{transform:translateX(6px);}}';
+document.head.appendChild(style);
+</script>
+</body>
+</html>
